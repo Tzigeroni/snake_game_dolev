@@ -36,13 +36,41 @@ class Snake:
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         return random.choice(directions)
 
+
 board = Board(30, 7)
 snake = Snake(board)
 snake.position = snake.spawn()
 snake.direction = snake.generate_direction()
 
+check_errors = pygame.init()
+# pygame.init() example output -> (6, 0)
+# second number in tuple gives number of errors
+if check_errors[1] > 0:
+    print(f'[!] Had {check_errors[1]} errors when initialising game, exiting...')
+    sys.exit(-1)
+else:
+    print('[+] Game successfully initialised')
 
-board.display()
+while True:
+    for event in pygame.event.get():
+        # Whenever a key is pressed
+        if event.type == pygame.KEYDOWN:
+            #implement lines with 'implement' comment + replace my structure to match case like we talked about.
+            if event.key == pygame.K_UP:
+                #implement
+            if event.key == pygame.K_DOWN:
+                #implement
+            if event.key == pygame.K_LEFT:
+                #implement
+            if event.key == pygame.K_RIGHT:
+                #implement
+            # Esc -> Create event to quit the game
+            if event.key == pygame.K_ESCAPE:
+                pygame.event.post(pygame.event.Event(pygame.QUIT))
+        elif event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+    board.display()
 
 
 
